@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="573.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HistogramSpecification">
+   <children>
+      <ImageView fx:id="original" fitHeight="256.0" fitWidth="256.0" layoutX="54.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="processed" fitHeight="256.0" fitWidth="256.0" layoutX="369.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
+      <BarChart fx:id="histogram" layoutX="7.0" layoutY="300.0" prefHeight="246.0" prefWidth="289.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <BarChart fx:id="histogram_processed" layoutX="329.0" layoutY="300.0" prefHeight="246.0" prefWidth="289.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Button layoutX="776.0" layoutY="126.0" mnemonicParsing="false" onAction="#specification" text="Histogram Specification" />
+      <LineChart fx:id="line" layoutX="659.0" layoutY="292.0" prefHeight="246.0" prefWidth="396.0">
+        <xAxis>
+          <NumberAxis side="BOTTOM" fx:id="xAxis" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="yAxis" side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Label fx:id="node" layoutX="688.0" layoutY="539.0" text="X: Y:" />
+   </children>
+</AnchorPane>

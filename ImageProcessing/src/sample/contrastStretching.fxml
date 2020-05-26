@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="617.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ContrastStretching">
+    <children>
+        <ImageView fx:id="original" fitHeight="256.0" fitWidth="256.0" layoutX="35.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
+        <LineChart fx:id="line" layoutX="595.0" layoutY="271.0" prefHeight="291.0" prefWidth="335.0">
+            <xAxis>
+                <NumberAxis side="BOTTOM" fx:id="xAxis" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis fx:id="yAxis" side="LEFT" />
+            </yAxis>
+        </LineChart>
+        <ImageView fx:id="processed" fitHeight="256.0" fitWidth="256.0" layoutX="339.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
+        <BarChart fx:id="histogram" layoutX="14.0" layoutY="321.0" prefHeight="230.0" prefWidth="281.0">
+            <xAxis>
+                <CategoryAxis side="BOTTOM" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis prefHeight="134.0" prefWidth="20.0" side="LEFT" />
+            </yAxis>
+        </BarChart>
+        <Button layoutX="697.0" layoutY="100.0" mnemonicParsing="false" onAction="#DefaultContrastStretching" text="Default Contrast Stretching" />
+        <Button layoutX="697.0" layoutY="70.0" mnemonicParsing="false" onAction="#Piecewise" text="Dynamic Contrast Strtching" />
+      <BarChart fx:id="histogram_processed" layoutX="323.0" layoutY="321.0" prefHeight="230.0" prefWidth="281.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis prefHeight="134.0" prefWidth="20.0" side="LEFT" />
+         </yAxis>
+      </BarChart>
+      <Label fx:id="node" layoutX="595.0" layoutY="562.0" text="Node:" />
+    </children>
+</AnchorPane>

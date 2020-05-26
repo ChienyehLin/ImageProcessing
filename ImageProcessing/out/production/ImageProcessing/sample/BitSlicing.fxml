@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="601.0" prefWidth="1197.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BitSlicing">
+   <children>
+      <ImageView fx:id="i7" fitHeight="256.0" fitWidth="256.0" layoutX="31.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="i3" fitHeight="256.0" fitWidth="256.0" layoutX="31.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="i6" fitHeight="256.0" fitWidth="256.0" layoutX="314.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="i5" fitHeight="256.0" fitWidth="256.0" layoutX="618.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="i0" fitHeight="256.0" fitWidth="256.0" layoutX="906.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="i2" fitHeight="256.0" fitWidth="256.0" layoutX="314.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="i1" fitHeight="256.0" fitWidth="256.0" layoutX="618.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="i4" fitHeight="256.0" fitWidth="256.0" layoutX="906.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.embed.swing.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.input.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="Pane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="797.0" prefWidth="1364.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="1364.0">
+        <menus>
+          <Menu id="open" fx:id="openfile" mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#OpenFile" text="Open">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="openBM" mnemonicParsing="false" onAction="#openBMP" text="o" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+                  <MenuItem fx:id="Gray_Image" mnemonicParsing="false" onAction="#setGray" text="Gray Image" />
+              <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem mnemonicParsing="false" onAction="#setImageOperation" text="Image Operation" />
+                  <MenuItem fx:id="Opacity" disable="true" mnemonicParsing="false" onAction="#setOpacity" text="Opacity " />
+                  <MenuItem mnemonicParsing="false" onAction="#setFilterTab" text="Filter" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+         <effect>
+            <Bloom threshold="1.0" />
+         </effect>
+      </MenuBar>
+      <TableView fx:id="table" layoutX="1108.0" layoutY="27.0" prefHeight="429.0" prefWidth="256.0">
+        <columns>
+          <TableColumn fx:id="value" prefWidth="125.0" resizable="false" text="value" />
+          <TableColumn fx:id="property" prefWidth="127.0" text="property" />
+        </columns>
+      </TableView>
+      <TabPane fx:id="tab" layoutY="27.0" prefHeight="745.0" prefWidth="1109.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Image">
+               <content>
+                  <AnchorPane prefHeight="29.0" prefWidth="54.0">
+                     <children>
+                        <ImageView fx:id="image" fitHeight="256.0" fitWidth="256.0" layoutX="14.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="Rimage" fitHeight="256.0" fitWidth="256.0" layoutX="329.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="Gimage" fitHeight="256.0" fitWidth="256.0" layoutX="14.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="Bimage" fitHeight="256.0" fitWidth="256.0" layoutX="329.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true" />
+                        <BarChart fx:id="histogram" centerShape="false" layoutX="644.0" layoutY="345.0" prefHeight="287.0" prefWidth="373.0" scaleShape="false">
+                          <xAxis>
+                            <CategoryAxis maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="0.0" side="BOTTOM" fx:id="x" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="y" prefHeight="217.0" prefWidth="25.0" side="LEFT" upperBound="70000.0" />
+                          </yAxis>
+                        </BarChart>
+                        <ImageView fx:id="negative" fitHeight="256.0" fitWidth="256.0" layoutX="644.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
+            <Tab fx:id="gray_tab" text="Gray Image">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="692.0" prefWidth="1109.0">
+                     <children>
+                        <ImageView fx:id="gray_negative" fitHeight="256.0" fitWidth="256.0" layoutX="378.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="gray_gray" fitHeight="256.0" fitWidth="256.0" layoutX="46.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="gray_Thresholding" fitHeight="256.0" fitWidth="256.0" layoutX="696.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+                        <Slider fx:id="gray_slider" blockIncrement="1.0" layoutX="745.0" layoutY="317.0" max="255.0" onDragOver="#Thresholding" prefHeight="45.0" prefWidth="186.0" />
+                        <Button layoutX="952.0" layoutY="328.0" mnemonicParsing="false" onAction="#setOtsu" text="Otsu" />
+                        <TextField fx:id="threshold_txt" editable="false" layoutX="759.0" layoutY="360.0" opacity="0.5" />
+                        <Button fx:id="BitSlicing" layoutX="76.0" layoutY="306.0" mnemonicParsing="false" onAction="#setBitSlicing" text="Bit Slicing" />
+                        <BarChart fx:id="otsu_histogram" layoutX="293.0" layoutY="398.0" prefHeight="307.0" prefWidth="373.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                        <Button fx:id="otsu_level" layoutX="951.0" layoutY="360.0" mnemonicParsing="false" onAction="#setOtsu_level" text="Otsu Level: 0" />
+                        <TextArea fx:id="otsu_threshold_list" layoutX="739.0" layoutY="464.0" prefHeight="107.0" prefWidth="200.0" />
+                        <Button fx:id="histogram_equalization" layoutX="952.0" layoutY="294.0" mnemonicParsing="false" onAction="#setHistogramEqualization" text="Histogram Equalization" />
+                        <Button layoutX="192.0" layoutY="306.0" mnemonicParsing="false" onAction="#waterMark" text="Watermark" />
+                        <Button layoutX="952.0" layoutY="258.0" mnemonicParsing="false" onAction="#contrastStreching" text="Contrast Stretching" />
+                        <Button layoutX="951.0" layoutY="227.0" mnemonicParsing="false" onAction="#histogramSpecification" text="Histogram Specification" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="Image_operation" disable="true" text="Image Operation">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="operation_original" fitHeight="256.0" fitWidth="256.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="operation_processed" fitHeight="640.0" fitWidth="640.0" layoutX="293.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button layoutX="984.0" layoutY="103.0" mnemonicParsing="false" onAction="#horizontalReflection" text="橫向鏡射" />
+                        <Button layoutX="984.0" layoutY="139.0" mnemonicParsing="false" onAction="#verticalDiagonalReflection" text="縱向鏡射" />
+                        <Button layoutX="972.0" layoutY="176.0" mnemonicParsing="false" onAction="#mainDiagonalReflection" text="主對角線鏡射" />
+                        <Button layoutX="972.0" layoutY="215.0" mnemonicParsing="false" onAction="#counterDiagonalReflection" text="反對角線鏡射" />
+                        <Slider fx:id="magnify" blockIncrement="0.2" layoutX="946.0" layoutY="265.0" max="2.5" min="1.0" />
+                        <Slider fx:id="reduce" blockIncrement="0.1" layoutX="946.0" layoutY="326.0" max="1.0" min="0.1" />
+                        <Slider fx:id="magnify2" layoutX="946.0" layoutY="389.0" max="2.5" min="1.0" />
+                        <Slider fx:id="reduce2" layoutX="946.0" layoutY="451.0" max="1.0" min="0.1" />
+                        <TextField fx:id="magnify_text" layoutX="955.0" layoutY="294.0" prefHeight="17.0" prefWidth="123.0" />
+                        <TextField fx:id="reduce_text" layoutX="955.0" layoutY="348.0" prefHeight="17.0" prefWidth="123.0" />
+                        <TextField fx:id="magnify2_text" layoutX="955.0" layoutY="418.0" prefHeight="17.0" prefWidth="123.0" />
+                        <TextField fx:id="reduce2_text" layoutX="955.0" layoutY="476.0" prefHeight="17.0" prefWidth="123.0" />
+                        <Slider fx:id="directRotation" layoutX="948.0" layoutY="514.0" max="6.283" />
+                        <TextField fx:id="directRotation_text" layoutX="956.0" layoutY="539.0" prefHeight="17.0" prefWidth="123.0" />
+                        <TextField fx:id="inverseRotation_text" layoutX="956.0" layoutY="598.0" prefHeight="17.0" prefWidth="123.0" />
+                        <Slider fx:id="inverseRotation" layoutX="949.0" layoutY="576.0" max="6.283" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="opacity_tab" text="Opacity">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="opacity_original" fitHeight="256.0" fitWidth="256.0" layoutX="39.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="opacity_new" fitHeight="256.0" fitWidth="256.0" layoutX="356.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="opacity_combine" fitHeight="256.0" fitWidth="256.0" layoutX="701.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <Slider fx:id="opacity_slider" blockIncrement="1.0" disable="true" layoutX="715.0" layoutY="489.0" prefHeight="50.0" prefWidth="229.0" />
+                        <Button layoutX="457.0" layoutY="502.0" mnemonicParsing="false" onAction="#opacity_file" text="Select File" />
+                        <Slider fx:id="opacity_slider1" blockIncrement="1.0" layoutX="715.0" layoutY="539.0" prefHeight="50.0" prefWidth="229.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Filter">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="filter_original" fitHeight="256.0" fitWidth="256.0" layoutX="54.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="filter_processed" fitHeight="256.0" fitWidth="256.0" layoutX="368.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button layoutX="446.0" layoutY="437.0" mnemonicParsing="false" onAction="#setMakeNoise" text="generate noise" />
+                        <Button fx:id="filter_medianFilter_button" layoutX="811.0" layoutY="167.0" mnemonicParsing="false" onAction="#medianFilter" text="Median Filter" />
+                        <Button fx:id="filter_lowPass_button" layoutX="811.0" layoutY="206.0" mnemonicParsing="false" onAction="#lowPassFilter" text="Low Pass Filter( Average )" />
+                        <Label fx:id="SNR" layoutX="469.0" layoutY="408.0" text="SNR:" />
+                        <Button layoutX="811.0" layoutY="251.0" mnemonicParsing="false" onAction="#outlier" text="Outlier( ε = 35 )" />
+                        <Button layoutX="811.0" layoutY="293.0" mnemonicParsing="false" onAction="#EdgeCrispening" text="Edge Crispening" />
+                        <Button layoutX="811.0" layoutY="335.0" mnemonicParsing="false" onAction="#HighboostFilter" text="High-boost Filter( A = 1.2 )" />
+                        <Button layoutX="811.0" layoutY="372.0" mnemonicParsing="false" onAction="#Sobel" text="Gradient (Sobel)" />
+                        <Button layoutX="811.0" layoutY="412.0" mnemonicParsing="false" onAction="#HighpassFilter" text="Highpass Filter" />
+                        <Button layoutX="811.0" layoutY="449.0" mnemonicParsing="false" onAction="#pseudoMedian" text="Pseudo Median" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <ScrollPane fx:id="scroll" layoutX="1108.0" layoutY="453.0" prefHeight="318.0" prefWidth="256.0">
+        <content>
+          <AnchorPane fx:id="anchor" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="paletteView" fitHeight="256.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <HBox layoutY="767.0" prefHeight="26.0" prefWidth="1333.0">
+         <children>
+            <Label fx:id="image_coordinate" prefHeight="26.0" prefWidth="144.0" />
+            <Label fx:id="R_status" prefHeight="26.0" prefWidth="60.0" />
+            <Label fx:id="G_status" layoutX="26.0" layoutY="26.0" prefHeight="26.0" prefWidth="60.0" />
+            <Label fx:id="B_status" layoutX="239.0" layoutY="10.0" prefHeight="26.0" prefWidth="60.0" />
+            <ImageView fx:id="image_color_status" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
+         </children></HBox>
+   </children>
+   <effect>
+      <Blend />
+   </effect>
+</AnchorPane>
